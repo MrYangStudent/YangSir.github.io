@@ -7,13 +7,17 @@
 [![Theme](https://img.shields.io/badge/Theme-PaperMod-blue)](https://github.com/adityatelange/hugo-PaperMod)
 [![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-Active-success?logo=github)](https://mryangstudent.github.io/YangSir.github.io/)
 
+## 关于博客
+
+YangSir's Tech Blog 是一位拥有 7 年开发经验的工程师 YangSir 的个人技术博客。长期深耕 Go、Python 后端开发，目前专注于大模型（LLM）相关技术学习与实践。这里记录项目经验、技术探索与学习心得。
+
 ## 博客内容
 
 | 文章 | 简介 |
 |------|------|
 | [从零微调大模型：用 Qwen2.5-7B 训练一个会写小说的 AI](https://mryangstudent.github.io/YangSir.github.io/posts/llm-novel-finetune/) | 零基础 LLM 微调实战指南。从 CUDA 环境搭建到模型推理，手把手教你用 QLoRA 微调 Qwen2.5-7B |
 
-**覆盖领域**：LLM · Fine-tuning · QLoRA/LoRA · NLP · 深度学习 · 项目实践
+**覆盖领域**：LLM · Fine-tuning · QLoRA/LoRA · NLP · 深度学习 · Go · Python · 项目实践
 
 ---
 
