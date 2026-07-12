@@ -15,9 +15,10 @@ YangSir's Tech Blog 是一位拥有 7 年开发经验的工程师 YangSir 的个
 
 | 文章 | 简介 |
 |------|------|
+| [零基础搭建 Hugo 博客：从安装到 GitHub Pages 上线](https://mryangstudent.github.io/YangSir.github.io/posts/hugo-github-blog-guide/) | 手把手教你用 Hugo + PaperMod + GitHub Actions 搭建个人技术博客，附带踩坑实录和配置详解 |
 | [从零微调大模型：用 Qwen2.5-7B 训练一个会写小说的 AI](https://mryangstudent.github.io/YangSir.github.io/posts/llm-novel-finetune/) | 零基础 LLM 微调实战指南。从 CUDA 环境搭建到模型推理，手把手教你用 QLoRA 微调 Qwen2.5-7B |
 
-**覆盖领域**：LLM · Fine-tuning · QLoRA/LoRA · NLP · 深度学习 · Go · Python · 项目实践
+**覆盖领域**：LLM · Fine-tuning · QLoRA/LoRA · NLP · 深度学习 · Hugo · GitHub Pages · Go · Python · 项目实践
 
 ---
 
