@@ -1,0 +1,81 @@
+baseURL: "https://mryangstudent.github.io/YangSir.github.io/"
+locale: "zh-cn"
+title: "YangSir's Tech Blog"
+theme: "PaperMod"
+
+enableInlineShortcodes: true
+enableRobotsTXT: true
+buildDrafts: false
+buildFuture: false
+buildExpired: false
+enableEmoji: true
+hasCJKLanguage: true
+
+params:
+  author: "YangSir"
+  description: "记录技术学习与项目实践的个人博客"
+  
+  # 主页配置
+  profileMode:
+    enabled: true
+    title: "Hi there 👋"
+    subtitle: "分享技术、记录成长"
+    imageUrl: ""
+    imageTitle: ""
+  
+  # 社交链接
+  socialIcons:
+    - name: github
+      url: "https://github.com/MrYangStudent"
+    - name: email
+      url: "mailto:yxiansheng907@gmail.com"
+  
+  ShowReadingTime: true
+  ShowShareButtons: true
+  ShowPostNavLinks: true
+  ShowBreadCrumbs: true
+  ShowCodeCopyButtons: true
+  ShowWordCount: true
+  ShowRssButtonInSectionTermList: true
+  ShowToc: true
+  ShowFullTextinRSS: true
+  
+  # 评论系统 (可选，后续可启用)
+  # comments: true
+  
+  defaultTheme: auto
+  disableThemeToggle: false
+
+markup:
+  highlight:
+    style: "monokai"
+    noClasses: false
+    lineNos: true
+  goldmark:
+    renderer:
+      unsafe: true
+
+menu:
+  main:
+    - identifier: posts
+      name: 文章
+      url: /posts/
+      weight: 10
+    - identifier: tags
+      name: 标签
+      url: /tags/
+      weight: 20
+    - identifier: search
+      name: 搜索
+      url: /search/
+      weight: 30
+    - identifier: about
+      name: 关于
+      url: /about/
+      weight: 40
+
+outputs:
+  home:
+    - HTML
+    - RSS
+    - JSON

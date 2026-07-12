@@ -1,0 +1,577 @@
+/* ============================================
+   Custom Theme Overrides for YangSir's Blog
+   ============================================ */
+
+/* ---------- CSS Variables Override ---------- */
+:root {
+    --gap: 24px;
+    --content-gap: 20px;
+    --nav-width: 1024px;
+    --main-width: 760px;
+    --header-height: 64px;
+    --footer-height: 60px;
+    --radius: 10px;
+
+    /* Light theme palette */
+    --accent: #2563eb;
+    --accent-hover: #1d4ed8;
+    --accent-light: #eff6ff;
+    --accent-gradient: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
+    --theme: #fafbfc;
+    --entry: #ffffff;
+    --primary: #1a1a2e;
+    --secondary: #64748b;
+    --tertiary: #e2e8f0;
+    --content: #334155;
+    --code-block-bg: #1e293b;
+    --code-bg: #f1f5f9;
+    --border: #e8ecf1;
+    --shadow-sm: 0 1px 3px rgba(0,0,0,0.04), 0 1px 2px rgba(0,0,0,0.06);
+    --shadow-md: 0 4px 6px rgba(0,0,0,0.04), 0 2px 4px rgba(0,0,0,0.06);
+    --shadow-lg: 0 10px 15px rgba(0,0,0,0.05), 0 4px 6px rgba(0,0,0,0.05);
+    color-scheme: light;
+}
+
+:root[data-theme="dark"] {
+    --accent: #60a5fa;
+    --accent-hover: #93bbfd;
+    --accent-light: #1e293b;
+    --accent-gradient: linear-gradient(135deg, #60a5fa 0%, #a78bfa 100%);
+    --theme: #0f172a;
+    --entry: #1e293b;
+    --primary: #e2e8f0;
+    --secondary: #94a3b8;
+    --tertiary: #334155;
+    --content: #cbd5e1;
+    --code-block-bg: #0f172a;
+    --code-bg: #1e293b;
+    --border: #334155;
+    --shadow-sm: 0 1px 3px rgba(0,0,0,0.3);
+    --shadow-md: 0 4px 6px rgba(0,0,0,0.4);
+    --shadow-lg: 0 10px 20px rgba(0,0,0,0.4);
+    color-scheme: dark;
+}
+
+/* ---------- Global Typography ---------- */
+body {
+    font-family: "Noto Sans SC", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    letter-spacing: 0.01em;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* ---------- Header / Nav ---------- */
+.header-nav {
+    background: var(--theme);
+    border-bottom: 1px solid var(--border);
+}
+
+.logo a {
+    font-size: 22px;
+    font-weight: 800;
+    background: var(--accent-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+[data-theme="dark"] .logo a {
+    background: var(--accent-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.menu a {
+    font-weight: 500;
+    color: var(--secondary);
+    transition: color 0.2s ease;
+    position: relative;
+}
+
+.menu a:hover {
+    color: var(--accent);
+}
+
+.menu .active {
+    color: var(--accent) !important;
+    text-decoration: none !important;
+}
+
+.menu .active::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--accent-gradient);
+    border-radius: 1px;
+}
+
+/* ---------- Links ---------- */
+a {
+    color: var(--accent);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+a:hover {
+    color: var(--accent-hover);
+}
+
+/* ---------- Post Entry Cards ---------- */
+.post-entry {
+    background: var(--entry);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: calc(var(--gap) * 1.2);
+    box-shadow: var(--shadow-sm);
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.post-entry:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--accent);
+}
+
+.entry-header h2 {
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 1.4;
+}
+
+.entry-header h2 a {
+    color: var(--primary);
+    transition: color 0.2s ease;
+}
+
+.entry-header h2 a:hover {
+    color: var(--accent);
+}
+
+.entry-content {
+    color: var(--secondary);
+    font-size: 15px;
+    line-height: 1.7;
+}
+
+.entry-footer {
+    font-size: 13px;
+    color: var(--secondary);
+}
+
+/* ---------- First Entry (hero card on home) ---------- */
+.first-entry {
+    min-height: 240px;
+    padding: calc(var(--gap) * 2);
+    background: var(--entry);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-md);
+    position: relative;
+    overflow: hidden;
+}
+
+.first-entry::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--accent-gradient);
+}
+
+.first-entry .entry-header h1 {
+    font-size: 32px;
+    font-weight: 800;
+    color: var(--primary);
+}
+
+.first-entry .entry-header h2 {
+    font-size: 36px;
+    font-weight: 800;
+    color: var(--primary);
+}
+
+/* ---------- Single Post Page ---------- */
+.post-title {
+    font-size: 36px;
+    font-weight: 800;
+    line-height: 1.3;
+    color: var(--primary);
+}
+
+.post-header {
+    margin-bottom: 32px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--border);
+}
+
+.post-content {
+    font-size: 16px;
+    line-height: 1.85;
+    color: var(--content);
+}
+
+/* ---------- Headings in post content ---------- */
+.post-content h2 {
+    font-size: 26px;
+    font-weight: 700;
+    margin-top: 48px;
+    margin-bottom: 16px;
+    color: var(--primary);
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--tertiary);
+}
+
+.post-content h3 {
+    font-size: 21px;
+    font-weight: 600;
+    margin-top: 36px;
+    margin-bottom: 12px;
+    color: var(--primary);
+}
+
+.post-content h2::before {
+    content: '# ';
+    color: var(--accent);
+    font-weight: 700;
+}
+
+/* ---------- Blockquotes ---------- */
+.post-content blockquote {
+    border-left: 4px solid var(--accent);
+    background: var(--accent-light);
+    border-radius: 0 var(--radius) var(--radius) 0;
+    padding: 16px 20px;
+    margin: 24px 0;
+    color: var(--content);
+    font-style: italic;
+}
+
+.post-content blockquote p {
+    margin: 0;
+}
+
+/* ---------- Code ---------- */
+:not(pre) > code {
+    background: var(--code-bg);
+    color: var(--accent);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 0.9em;
+    font-weight: 500;
+    border: 1px solid var(--border);
+}
+
+div.highlight,
+pre {
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-md);
+    margin: 24px 0;
+    border: 1px solid var(--border);
+}
+
+div.highlight pre {
+    padding: 20px;
+    border-radius: var(--radius);
+    overflow-x: auto;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.copy-code {
+    border-radius: 6px;
+    font-size: 13px;
+    padding: 2px 8px;
+    transition: background 0.2s ease;
+}
+
+.copy-code:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+/* ---------- Tables ---------- */
+.post-content table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin: 24px 0;
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--border);
+}
+
+.post-content th {
+    background: var(--accent-light);
+    color: var(--accent);
+    font-weight: 700;
+    padding: 12px 16px;
+    text-align: left;
+    font-size: 14px;
+    border-bottom: 2px solid var(--tertiary);
+}
+
+.post-content td {
+    padding: 10px 16px;
+    border-bottom: 1px solid var(--border);
+    font-size: 14px;
+}
+
+.post-content tr:last-child td {
+    border-bottom: none;
+}
+
+.post-content tr:hover td {
+    background: var(--code-bg);
+}
+
+/* ---------- Tags ---------- */
+.post-tags a {
+    border-radius: 20px;
+    padding: 4px 14px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--accent) !important;
+    background: var(--accent-light) !important;
+    border: 1px solid var(--accent);
+    transition: all 0.2s ease;
+}
+
+.post-tags a:hover {
+    background: var(--accent) !important;
+    color: #fff !important;
+}
+
+/* ---------- TOC ---------- */
+details.toc {
+    background: var(--entry);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-sm);
+    overflow: hidden;
+}
+
+details.toc summary {
+    font-weight: 600;
+    color: var(--accent);
+    padding: 10px 20px;
+}
+
+details.toc .inner {
+    margin: 0 20px;
+    padding-bottom: 12px;
+}
+
+details.toc nav ul li {
+    margin: 4px 0;
+}
+
+details.toc a {
+    color: var(--secondary);
+    transition: color 0.2s ease;
+    font-size: 14px;
+}
+
+details.toc a:hover {
+    color: var(--accent);
+}
+
+/* ---------- Profile Mode ---------- */
+.main .profile {
+    min-height: 70vh;
+}
+
+.profile .profile_inner h1 {
+    font-size: 48px;
+    font-weight: 800;
+    background: var(--accent-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 8px;
+}
+
+.profile .profile_inner h2 {
+    font-size: 22px;
+    font-weight: 400;
+    color: var(--secondary);
+    margin-bottom: 8px;
+}
+
+.profile img {
+    border: 3px solid var(--accent);
+    box-shadow: 0 0 0 4px var(--accent-light);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.profile img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 0 6px var(--accent-light);
+}
+
+.buttons {
+    gap: 12px;
+    max-width: 500px;
+}
+
+.button {
+    background: var(--entry);
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    padding: 8px 20px;
+    font-weight: 500;
+    color: var(--primary);
+    box-shadow: var(--shadow-sm);
+    transition: all 0.25s ease;
+}
+
+.button:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    box-shadow: var(--shadow-md);
+    transform: translateY(-1px);
+}
+
+/* ---------- Social Icons ---------- */
+.social-icons a svg {
+    height: 24px;
+    width: 24px;
+    fill: var(--secondary);
+    transition: fill 0.2s ease;
+}
+
+.social-icons a:hover svg {
+    fill: var(--accent);
+}
+
+/* ---------- Pagination ---------- */
+.pagination a {
+    background: var(--accent);
+    color: #fff;
+    border-radius: 24px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.pagination a:hover {
+    background: var(--accent-hover);
+    transform: translateY(-1px);
+}
+
+/* ---------- Post Nav Links (prev/next) ---------- */
+.paginav {
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-sm);
+}
+
+.paginav a {
+    border-radius: var(--radius);
+}
+
+.paginav .title {
+    color: var(--accent);
+}
+
+/* ---------- Share Buttons ---------- */
+.share-buttons {
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-sm);
+}
+
+/* ---------- Footer ---------- */
+footer {
+    color: var(--secondary);
+    font-size: 13px;
+    border-top: 1px solid var(--border);
+}
+
+/* ---------- Scrollbar ---------- */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--code-bg);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--tertiary);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--secondary);
+}
+
+/* ---------- Selection ---------- */
+::selection {
+    background: var(--accent);
+    color: #fff;
+}
+
+/* ---------- Divider (hr) ---------- */
+.post-content hr {
+    border: none;
+    height: 1px;
+    background: var(--tertiary);
+    margin: 40px 0;
+}
+
+/* ---------- Responsive ---------- */
+@media screen and (max-width: 768px) {
+    .post-title {
+        font-size: 26px;
+    }
+    
+    .post-content h2 {
+        font-size: 22px;
+    }
+    
+    .post-content h3 {
+        font-size: 18px;
+    }
+    
+    .first-entry {
+        min-height: 180px;
+        padding: var(--gap);
+    }
+    
+    .first-entry .entry-header h2 {
+        font-size: 28px;
+    }
+    
+    .profile .profile_inner h1 {
+        font-size: 34px;
+    }
+}
+
+/* ---------- Animated gradient bar on hover for cards ---------- */
+.post-entry::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 100%;
+    height: 2px;
+    background: var(--accent-gradient);
+    transition: right 0.35s ease;
+    border-radius: 0 0 var(--radius) var(--radius);
+}
+
+.post-entry:hover::after {
+    right: 0;
+}
+
+/* ---------- Search highlight ---------- */
+mark {
+    background: var(--accent);
+    color: #fff;
+    padding: 1px 4px;
+    border-radius: 3px;
+}
