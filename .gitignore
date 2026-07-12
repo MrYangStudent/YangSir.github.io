@@ -17,3 +17,6 @@ Thumbs.db
 .vscode/
 *.swp
 *.swo
+.codebuddy/
+hugo.log
+hugo.err.log
