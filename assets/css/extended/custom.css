@@ -575,3 +575,47 @@ mark {
     padding: 1px 4px;
     border-radius: 3px;
 }
+
+/* ---------- Homepage Hero ---------- */
+.home-hero {
+    margin-bottom: 20px;
+}
+
+.profile-subtitle {
+    display: block;
+    max-width: 620px;
+    margin: 0 auto 20px;
+    line-height: 1.8;
+    font-size: 17px;
+    color: var(--secondary);
+}
+
+.home-hero .buttons {
+    margin-top: 18px;
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.home-section-header {
+    margin-top: 30px;
+    margin-bottom: 12px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border);
+}
+
+.home-section-header h1 {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--primary);
+    margin: 0;
+}
+
+.home-section-header h1::before {
+    content: "#";
+    color: var(--accent);
+    margin-right: 8px;
+    font-weight: 800;
+}
+
