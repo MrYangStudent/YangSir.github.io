@@ -24,39 +24,55 @@ params:
     - name: email
       url: "mailto:yxiansheng907@gmail.com"
 
-  # ⚠️ 按钮链接必须使用 Subpath 规则（见下方）
+  # ⚠️ 按钮链接必须去掉前导 /（详见 relURL 陷阱说明）
   profileMode:
     buttons:             # ← 禁止删除整个段落
       - name: "阅读文章"
-        url: "/posts/"   # ← 必须用 relURL 处理 subpath
+        url: "posts/"    # ← 不带前导 /，relURL 才会拼接 subpath
       - name: "关于我"
-        url: "/about/"
+        url: "about/"
 
 # ⚠️ 导航菜单也要存在
 menu:
   main:                  # ← 禁止删除
     - identifier: posts
       name: 文章
-      url: /posts/
+      url: posts/
     - identifier: about
       name: 关于
-      url: /about/
+      url: about/
 ```
 
 ### 2. Subpath 处理规则 — 所有链接必须用 `relURL`
 
 - **baseURL**: `https://mryangstudent.github.io/YangSir.github.io/`
 - **部署子路径**: `/YangSir.github.io/`
-- **规则**: `layouts/` 中的所有自定义链接必须用 `{{ $url | relURL }}` 或 `{{ "/path/" | relURL }}`，禁止硬编码路径
+- **规则**: `layouts/` 中的所有自定义链接必须用 `{{ $url | relURL }}`，禁止硬编码路径
 - **容易遗漏的地方**: `index.html` 的按钮链接、`partials/` 中的链接、自定义菜单模板
 
 ```html
-<!-- ✅ 正确 -->
-<a href="{{ "/posts/" | relURL }}">文章</a>
+<!-- ✅ 正确 — 去掉前导 /，relURL 才会拼接 subpath -->
+<a href="{{ "posts/" | relURL }}">文章</a>
 
-<!-- ❌ 错误 — 部署后 404 -->
+<!-- ❌ 错误 1 — 硬编码路径，部署后 404 -->
 <a href="/posts/">文章</a>
+
+<!-- ❌ 错误 2 — 带前导 /，relURL 不会拼接 subpath！（见下方陷阱说明） -->
+<a href="{{ "/posts/" | relURL }}">文章</a>
 ```
+
+### ⚠️ relURL 前导斜杠陷阱（导致 subpath 不生效的根因）
+
+**Hugo `relURL` 反直觉行为**：当输入以 `/` 开头时，`relURL` 认为这是一个「相对于服务器根目录」的绝对路径，**不会**拼接 baseURL 的 subpath。
+
+| 输入 | `relURL` 输出 | subpath 是否生效 |
+|------|--------------|:--:|
+| `"posts/"` | `/YangSir.github.io/posts/` | ✅ 生效 |
+| `"/posts/"` | `/posts/` | ❌ 不生效 |
+
+**因此所有传递给 `relURL` 的路径都必须去掉前导斜杠**：
+- `hugo.yaml` 中 `buttons[].url`、`menu.main[].url` 都**不带**前导 `/`
+- `layouts/` 模板中所有 `{{ "xxx" | relURL }}` 都**不带**前导 `/`
 
 ### 3. 首页完整依赖关系
 
@@ -139,6 +155,7 @@ git push origin master
 | 删除 `socialIcons` 配置 | 社交图标消失 | 如需修改，先确保 `social_icons.html` partial 同步更新 |
 | 删除 `profileMode.buttons` | 跳转按钮消失 | 保持至少 `posts` 和 `about` 两个按钮 |
 | 硬编码链接路径（不用 relURL） | 部署后 404 | 始终使用 `relURL` |
+| `relURL` 传入带前导 `/` 的路径 | subpath 不拼接，链接错误 | 去掉前导 `/`，用 `"posts/"` 而非 `"/posts/"` |
 | 在 `_partials/` 添加被模板引用的文件 | 渲染失败 | 放在 `layouts/partials/` |
 | 删除 `content/about.md` | "关于我"页面 404 | 保留该文件 |
 | 删除 `content/posts/_index.md` | 文章列表 404 | 保留该文件 |
