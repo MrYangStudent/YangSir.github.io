@@ -7,6 +7,16 @@
 [![Theme](https://img.shields.io/badge/Theme-PaperMod-blue)](https://github.com/adityatelange/hugo-PaperMod)
 [![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-Active-success?logo=github)](https://mryangstudent.github.io/YangSir.github.io/)
 
+## 博客内容
+
+| 文章 | 简介 |
+|------|------|
+| [从零微调大模型：用 Qwen2.5-7B 训练一个会写小说的 AI](https://mryangstudent.github.io/YangSir.github.io/posts/llm-novel-finetune/) | 零基础 LLM 微调实战指南。从 CUDA 环境搭建到模型推理，手把手教你用 QLoRA 微调 Qwen2.5-7B |
+
+**覆盖领域**：LLM · Fine-tuning · QLoRA/LoRA · NLP · 深度学习 · 项目实践
+
+---
+
 ## 本地运行
 
 ```bash
