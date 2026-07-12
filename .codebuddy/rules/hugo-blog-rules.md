@@ -79,21 +79,33 @@ menu:
 - **PaperMod 主题**: 内部 partials 放在 `themes/PaperMod/layouts/_partials/`，自定义模板**不能依赖它们**
 - **规则**: 所有项目自定义的 partial 必须放在 `layouts/partials/`，不能在模板中引用 `_partials/` 下的文件
 
----
+### 5. 先确认服务进程，再诊断页面问题
 
-## 🔄 标准操作流程
+- **Hugo 进程必须存活**：出现 404 / 页面空白时，**第一步不是改配置，而是先检查 `hugo.exe` 是否在运行**
+- 如果进程不存在，必须先按「本地预览」命令启动，等待 `Web Server is available` 后再验证页面
+- 只有在服务运行且页面仍 404 时，才允许排查配置、路径、文件缺失等问题
+
+```powershell
+# 检查 hugo 是否运行
+Get-Process hugo -ErrorAction SilentlyContinue | Select-Object Id, Path
+```
+
+---
 
 ### 本地预览
 
 ```powershell
-# 1. 找到 hugo（可能在 GOPATH/bin 或 winget 目录）
+# 1. 检查 hugo 是否已经在运行（如果已经运行则不要重复启动）
+Get-Process hugo -ErrorAction SilentlyContinue | Select-Object Id, Path
+
+# 2. 找到 hugo（可能在 GOPATH/bin 或 winget 目录）
 $env:PATH = [Environment]::GetEnvironmentVariable("PATH","Machine") + ";" + 
             [Environment]::GetEnvironmentVariable("PATH","User")
 
-# 2. 使用正确的 baseURL（必须带 subpath）
+# 3. 使用正确的 baseURL（必须带 subpath）
 hugo serve --port 3131 --baseURL "http://localhost:3131/YangSir.github.io/" --bind "127.0.0.1"
 
-# 3. 验证关键页面
+# 4. 验证关键页面
 #    - 首页:    http://localhost:3131/YangSir.github.io/
 #    - 文章列表: http://localhost:3131/YangSir.github.io/posts/
 #    - 关于页:   http://localhost:3131/YangSir.github.io/about/
