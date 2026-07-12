@@ -6,7 +6,7 @@
     <div class="profile_inner">
         <h1>{{ .title | default site.Title | markdownify }}</h1>
         <span class="profile-subtitle">{{ .subtitle | markdownify }}</span>
-        {{- partial "social_icons.html" . }}
+        {{- partial "social_icons.html" site.Params }}
         {{- with .buttons }}
         <div class="buttons">
             {{- range . }}

@@ -17,7 +17,7 @@ params:
   
   # 主页配置（由自定义 layouts/index.html 渲染）
   profileMode:
-    enabled: false
+    enabled: true
     title: "Hi there 👋"
     subtitle: "一名拥有 7 年开发经验的工程师，深耕 Go、Python 后端开发，目前专注于大模型（LLM）相关技术学习。在这里记录技术探索、项目实践与学习心得。"
     imageUrl: ""
